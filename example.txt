@@ -1,0 +1,6 @@
+Completed Date;Reference;Paid Out (EUR);Paid In (EUR);Exchange Out;Exchange In; Balance (EUR)
+31 May 2017;Dollarama;0.76;;CAD 1.13;;214.12
+31 May 2017;The Edmund Burke;13.74;;CAD 20.65;;214.88
+31 May 2017;Himalayan Coffee House;2.73;;CAD 4.10;;228.62
+31 May 2017;Tim Hortons 6529;1.33;;CAD 1.98;;231.35
+31 May 2017;Kenzo Ramen Sheppard;30.24;;CAD 45.22;;232.68

@@ -1,0 +1,44 @@
+* Revoledger
+
+Convert [[https://revolut.com][Revolut]] transaction logs into [[https://hledger.org][hledger]] journals.
+
+** Usage
+
+#+BEGIN_SRC 
+python3 main.py <infile>
+#+END_SRC
+
+** Example
+From this...
+
+#+BEGIN_SRC 
+Completed Date;Reference;Paid Out (EUR);Paid In (EUR);Exchange Out;Exchange In; Balance (EUR)
+31 May 2017;Dollarama;0.76;;CAD 1.13;;214.12
+31 May 2017;The Edmund Burke;13.74;;CAD 20.65;;214.88
+31 May 2017;Himalayan Coffee House;2.73;;CAD 4.10;;228.62
+31 May 2017;Tim Hortons 6529;1.33;;CAD 1.98;;231.35
+31 May 2017;Kenzo Ramen Sheppard;30.24;;CAD 45.22;;232.68
+#+END_SRC
+
+...to /this/:
+#+BEGIN_SRC 
+2017/05/31 Kenzo Ramen Sheppard
+    Expenses:Kenzo Ramen Sheppard    30.24
+    Assets:Revolut:Euro    -30.24
+
+2017/05/31 Tim Hortons 6529
+    Expenses:Tim Hortons 6529    1.33
+    Assets:Revolut:Euro    -1.33
+
+2017/05/31 Himalayan Coffee House
+    Expenses:Himalayan Coffee House    2.73
+    Assets:Revolut:Euro    -2.73
+
+2017/05/31 The Edmund Burke
+    Expenses:The Edmund Burke    13.74
+    Assets:Revolut:Euro    -13.74
+
+2017/05/31 Dollarama
+    Expenses:Dollarama    0.76
+    Assets:Revolut:Euro    -0.76
+#+END_SRC
