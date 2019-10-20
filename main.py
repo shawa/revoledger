@@ -10,12 +10,14 @@ def format_date(revolut_stamp):
     return (datetime.strptime(revolut_stamp.strip(), in_fmt)
                     .strftime(out_fmt))
 
-def to_hledger(is_incoming, date, ref, amount):
+def to_hledger(is_incoming, date, ref, amount, replace_comma=False):
     to_acc, from_acc = ((REVOLUT_ACCOUNT, f'Income:{ref}')
                         if is_incoming
                         else (f'Expenses:{ref}', REVOLUT_ACCOUNT))
 
     if replace_comma:
+        amount = amount.replace(",", ".")
+
     neg_amount = f"-{amount}"
     return f"""{date} {ref.strip()}
     {to_acc:34}    {amount:>10}
@@ -33,13 +35,13 @@ def parse(revolut_csv):
         yield is_incoming, stamp, ref, amount
 
 
-def main(infile):
+def main(infile, *, replace_comma=False):
     with open(infile, 'r') as csvfile:
         lines = reversed(list(csvfile)[1:])
         reader = csv.reader(lines, delimiter=';')
 
     for entry in parse(reader):
-        print(to_hledger(*entry))
+        print(to_hledger(*entry, replace_comma))
 
 if __name__ == '__main__':
     clize.run(main)
