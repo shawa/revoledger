@@ -22,3 +22,9 @@ def test_example2_import(example2):
     from main import main
 
     main(example2)
+
+
+def test_example2_import_replace_comma(example2):
+    from main import main
+
+    main(example2, replace_comma=True)
