@@ -5,9 +5,9 @@ from datetime import datetime
 REVOLUT_ACCOUNT = 'Assets:Revolut:Euro'
 
 def format_date(revolut_stamp):
-    in_fmt = '%d %B %Y'
+    in_fmt = '%d %b %Y'
     out_fmt = '%Y/%m/%d'
-    return (datetime.strptime(revolut_stamp, in_fmt)
+    return (datetime.strptime(revolut_stamp.strip(), in_fmt)
                     .strftime(out_fmt))
 
 def to_hledger(is_incoming, date, ref, amount):
