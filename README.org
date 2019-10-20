@@ -42,3 +42,11 @@ Completed Date;Reference;Paid Out (EUR);Paid In (EUR);Exchange Out;Exchange In; 
     Expenses:Dollarama    0.76
     Assets:Revolut:Euro    -0.76
 #+END_SRC
+
+** Run test suite
+
+the tests need to be invoked in the root of this repo for some path magic.
+
+#+BEGIN_SRC
+python3 -m pytest
+#+END_SRC
