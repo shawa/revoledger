@@ -15,9 +15,11 @@ def to_hledger(is_incoming, date, ref, amount):
                         if is_incoming
                         else (f'Expenses:{ref}', REVOLUT_ACCOUNT))
 
-    return f"""{date} {ref}
-    {to_acc}    {amount}
-    {from_acc}    -{amount}\n"""
+    if replace_comma:
+    neg_amount = f"-{amount}"
+    return f"""{date} {ref.strip()}
+    {to_acc:34}    {amount:>10}
+    {from_acc:34}    {neg_amount:>10}\n"""
 
 
 def parse(revolut_csv):
