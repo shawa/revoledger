@@ -23,10 +23,13 @@ def to_hledger(is_incoming, date, ref, amount):
 
 
 def parse(revolut_csv):
-    for date, ref, paid_out, paid_in, _exch_out, _exch_in, _bal in revolut_csv:
+    for date, ref, paid_out, paid_in, _exch_out, _exch_in, _bal, *opt in revolut_csv:
+        if len(opt) >= 2:
+            ref = f"{ref.strip()} ({opt[1].strip()})"
+
         is_incoming = bool(paid_in)
         stamp = format_date(date)
-        amount = paid_in if is_incoming else paid_out
+        amount = paid_in.strip() if is_incoming else paid_out.strip()
         yield is_incoming, stamp, ref, amount
 
 
