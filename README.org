@@ -2,6 +2,15 @@
 
 Convert [[https://revolut.com][Revolut]] transaction logs into [[https://hledger.org][hledger]] journals.
 
+** Installation
+
+Requires Python 3.6 (for f-strings)
+
+Install:
+#+BEGIN_SRC 
+pip install -r requirements.txt
+#+END_SRC
+
 ** Usage
 
 #+BEGIN_SRC 
